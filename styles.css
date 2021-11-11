@@ -1,0 +1,19 @@
+.gameboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 2px;
+    grid-row-gap: 2px;
+}
+
+.markerCont {
+    width: 90px;
+    height: 90px;
+    border: 2px solid black;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 75px;
+}
