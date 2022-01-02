@@ -14,7 +14,7 @@ const playerTwo = {
 //sets playerOne as the default first player
 let currentPlayer = playerOne;
 
-let boardArray = [];
+let boardArray = ['','','','','','','','',''];
 
 //this assigns each box an individual ID...
 let idMaker = 0;
@@ -34,13 +34,13 @@ for (i = 0; i < boxes.length; i++) {
             switch (currentPlayer) {
                 case playerOne:
                     this.innerHTML = playerOne.marker;
-                    boardArray.push(playerOne.marker);
+                    boardArray.splice(this.id, 1, playerOne.marker);
                     this.className = 'taken';
                     switchActivePlayer();
                     break;
                 case playerTwo:
                     this.innerHTML = playerTwo.marker;
-                    boardArray.push(playerTwo.marker);
+                    boardArray.splice(this.id, 1, playerTwo.marker);
                     this.className = 'taken';
                     switchActivePlayer();
                     break;
@@ -66,3 +66,5 @@ function switchActivePlayer() {
 function gameFlow() {
 
 }
+
+
