@@ -14,7 +14,7 @@ const playerTwo = {
 //sets playerOne as the default first player
 let currentPlayer = playerOne;
 
-let boardArray = ['X', 'O', 'X', 'X', 'O', 'O', 'X', 'O', 'X'];
+let boardArray = [];
 
 //this assigns each box an individual ID...
 let idMaker = 0;
@@ -25,17 +25,26 @@ for (i = 0; i < boxes.length; i++) {
 
 
 //controls the actual "marking" of Xs and Os on the board...
+//changing class to 'taken' allows me to identify which boxes have text in them thus alerting the user if it is clicked
 for (i = 0; i < boxes.length; i++) {
     boxes[i].addEventListener('click', function() {
-        switch (currentPlayer) {
-            case playerOne:
-                this.innerHTML = playerOne.marker;
-                switchActivePlayer();
-                break;
-            case playerTwo:
-                this.innerHTML = playerTwo.marker;
-                switchActivePlayer();
-                break;
+        if (this.className === 'taken') {
+            alert('Already Taken!')
+        } else {
+            switch (currentPlayer) {
+                case playerOne:
+                    this.innerHTML = playerOne.marker;
+                    boardArray.push(playerOne.marker);
+                    this.className = 'taken';
+                    switchActivePlayer();
+                    break;
+                case playerTwo:
+                    this.innerHTML = playerTwo.marker;
+                    boardArray.push(playerTwo.marker);
+                    this.className = 'taken';
+                    switchActivePlayer();
+                    break;
+            };
         };
     });
 };
