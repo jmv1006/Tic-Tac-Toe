@@ -1,5 +1,5 @@
 const boardContainer = document.getElementById('boardcont');
-
+let boxes = document.querySelectorAll('.markercont');
 
 const playerOne = {
     name: 'User',
@@ -11,13 +11,15 @@ const playerTwo = {
     marker: 'O'
 };
 
-let boardArray = ['X', 'O', 'X', 'X'];
+let boardArray = [];
+let boardArrayLength = boardArray.length;
 
-function generateBoard() {
-    for(i = 0; i < 9; i++) {
-        const newDiv = document.createElement('div');
-        boardContainer.appendChild(newDiv).className = 'markerCont';   
-    };
+
+for (i = 0; i < boxes.length; i++) {
+    boxes[i].addEventListener('click', function() {
+        this.innerHTML = 'min';
+    })
 };
 
-generateBoard();
+
+
