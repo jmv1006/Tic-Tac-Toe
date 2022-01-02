@@ -27,3 +27,12 @@ body {
     font-size: 25px;
     cursor: pointer;
 }
+
+#turnDisplay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 25px;
+    font-size: 25px;
+}
