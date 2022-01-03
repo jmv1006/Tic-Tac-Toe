@@ -14,7 +14,9 @@ const playerTwo = {
 //sets playerOne as the default first player
 let currentPlayer = playerOne;
 
-let boardArray = ['','','','','','','','',''];
+const gameBoard = {
+    boardArray: ['','','','','','','','','']
+};
 
 //this assigns each box an individual ID...
 let idMaker = 0;
@@ -22,6 +24,10 @@ for (i = 0; i < boxes.length; i++) {
     boxes[i].id = idMaker;
     idMaker++;
 };
+
+function gameFlow(position) {
+    console.log(position);
+}
 
 
 //controls the actual "marking" of Xs and Os on the board...
@@ -34,13 +40,15 @@ for (i = 0; i < boxes.length; i++) {
             switch (currentPlayer) {
                 case playerOne:
                     this.innerHTML = playerOne.marker;
-                    boardArray.splice(this.id, 1, playerOne.marker);
+                    gameBoard.boardArray.splice(this.id, 1, playerOne.marker);
+                    gameFlow(this.id);
                     this.className = 'taken';
                     switchActivePlayer();
                     break;
                 case playerTwo:
                     this.innerHTML = playerTwo.marker;
-                    boardArray.splice(this.id, 1, playerTwo.marker);
+                    gameBoard.boardArray.splice(this.id, 1, playerTwo.marker);
+                    gameFlow(this.id);
                     this.className = 'taken';
                     switchActivePlayer();
                     break;
@@ -55,16 +63,19 @@ function switchActivePlayer() {
         case playerOne:
             currentPlayer = playerTwo;
             document.getElementById('currentTurnDisplay').innerHTML = 'Player Two (O)';
+            checkWinner();
             break;
         case playerTwo:
             currentPlayer = playerOne;
             document.getElementById('currentTurnDisplay').innerText = 'Player One (X)';
+            checkWinner();
             break;
     }
 };
 
-function gameFlow() {
-
+let winConditions = {
+    
 }
-
-
+function checkWinner() {
+    
+}
