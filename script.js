@@ -16,7 +16,7 @@ let currentPlayer = playerOne;
 
 //gameboard object
 const gameBoard = {
-    boardArray: ['','','','','','','','','']
+    boardArray: [0,0,0,0,0,0,0,0,0]
 };
 
 //this assigns each box an individual ID...
@@ -27,31 +27,52 @@ for (i = 0; i < boxes.length; i++) {
 };
 
 //overall gameflow..
-const gameFlow = {
+const winningCombos = [
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [2,4,6],
+    [0,4,8]
+];
 
+function checkForWinner() {
+    
+
+
+
+
+
+}
+
+
+let boardStatus;
+function gameFlow() {
+    boardStatus = gameBoard.boardArray.join('');
 };
-
 
 //controls the actual "marking" of Xs and Os on the board...
 //changing class to 'taken' allows me to identify which boxes have text in them thus alerting the user if it is clicked
 for (i = 0; i < boxes.length; i++) {
     boxes[i].addEventListener('click', function() {
-        if (this.className === 'taken') {
+        if (this.getAttribute('data-number') == 1) {
             alert('Already Taken!')
         } else {
             switch (currentPlayer) {
                 case playerOne:
                     this.innerHTML = playerOne.marker;
-                    gameBoard.boardArray.splice(this.id, 1, playerOne.marker);
-                    gameFlow(playerOne, this.id);
+                    gameBoard.boardArray.splice(this.id, 1, 'X');
+                    //gameFlow(playerOne, this.id);
                     document.getElementById(this.id).setAttribute('data-number',1);
                     switchActivePlayer();
                     break;
                 case playerTwo:
                     this.innerHTML = playerTwo.marker;
-                    gameBoard.boardArray.splice(this.id, 1, playerTwo.marker);
-                    gameFlow(playerTwo, this.id);
-                    document.getElementById(this.id).setAttribute('data-number',1);
+                    gameBoard.boardArray.splice(this.id, 1, 'O');
+                    //gameFlow(playerTwo, this.id);
+                    document.getElementById(this.id).setAttribute('data-number',2);
                     switchActivePlayer();
                     break;
             };
@@ -65,16 +86,12 @@ function switchActivePlayer() {
         case playerOne:
             currentPlayer = playerTwo;
             document.getElementById('currentTurnDisplay').innerHTML = 'Player Two (O)';
-            checkWinner();
+            checkForWinner();
             break;
         case playerTwo:
             currentPlayer = playerOne;
             document.getElementById('currentTurnDisplay').innerText = 'Player One (X)';
-            checkWinner();
+            checkForWinner();
             break;
     }
 };
-
-function checkWinner() {
-    
-}
