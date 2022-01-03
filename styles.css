@@ -26,17 +26,6 @@ body {
     cursor: pointer;
 }
 
-.taken {
-    width: 90px;
-    height: 90px;
-    border: 2px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
-    cursor: pointer;
-}
-
 #turnDisplay {
     display: flex;
     justify-content: center;

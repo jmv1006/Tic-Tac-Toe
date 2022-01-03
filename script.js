@@ -14,6 +14,7 @@ const playerTwo = {
 //sets playerOne as the default first player
 let currentPlayer = playerOne;
 
+//gameboard object
 const gameBoard = {
     boardArray: ['','','','','','','','','']
 };
@@ -25,9 +26,10 @@ for (i = 0; i < boxes.length; i++) {
     idMaker++;
 };
 
-function gameFlow(position) {
-    console.log(position);
-}
+//overall gameflow..
+const gameFlow = {
+
+};
 
 
 //controls the actual "marking" of Xs and Os on the board...
@@ -41,15 +43,15 @@ for (i = 0; i < boxes.length; i++) {
                 case playerOne:
                     this.innerHTML = playerOne.marker;
                     gameBoard.boardArray.splice(this.id, 1, playerOne.marker);
-                    gameFlow(this.id);
-                    this.className = 'taken';
+                    gameFlow(playerOne, this.id);
+                    document.getElementById(this.id).setAttribute('data-number',1);
                     switchActivePlayer();
                     break;
                 case playerTwo:
                     this.innerHTML = playerTwo.marker;
                     gameBoard.boardArray.splice(this.id, 1, playerTwo.marker);
-                    gameFlow(this.id);
-                    this.className = 'taken';
+                    gameFlow(playerTwo, this.id);
+                    document.getElementById(this.id).setAttribute('data-number',1);
                     switchActivePlayer();
                     break;
             };
@@ -73,9 +75,6 @@ function switchActivePlayer() {
     }
 };
 
-let winConditions = {
-    
-}
 function checkWinner() {
     
 }
