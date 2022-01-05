@@ -44,7 +44,12 @@ const gameFlow = {
 
 function checkWinner(num, currentP) {
    console.log(num, currentP);
+   let currentP = playerOne;
 
+   switch(currentP) {
+       case('playerOne'):
+        //
+   }
 };
 
 
