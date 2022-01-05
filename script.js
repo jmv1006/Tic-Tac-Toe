@@ -12,7 +12,7 @@ const playerTwo = {
 };
 
 //sets playerOne as the default first player
-let currentPlayer = playerOne;
+
 
 //gameboard object
 const gameBoard = {
@@ -38,20 +38,15 @@ const winningCombos = [
     [0,4,8]
 ];
 
-function checkForWinner() {
-    
-
-
-
-
-
+const gameFlow = {
+    currentPlayer: playerOne,
 }
 
+function checkWinner(num, currentP) {
+   console.log(num, currentP);
 
-let boardStatus;
-function gameFlow() {
-    boardStatus = gameBoard.boardArray.join('');
 };
+
 
 //controls the actual "marking" of Xs and Os on the board...
 //changing class to 'taken' allows me to identify which boxes have text in them thus alerting the user if it is clicked
@@ -59,21 +54,23 @@ for (i = 0; i < boxes.length; i++) {
     boxes[i].addEventListener('click', function() {
         if (this.getAttribute('data-number') == 1) {
             alert('Already Taken!')
+        } else if (this.getAttribute('data-number') == 2) {
+            alert('Already Taken!');
         } else {
-            switch (currentPlayer) {
+            switch (gameFlow.currentPlayer) {
                 case playerOne:
                     this.innerHTML = playerOne.marker;
                     gameBoard.boardArray.splice(this.id, 1, 'X');
-                    //gameFlow(playerOne, this.id);
                     document.getElementById(this.id).setAttribute('data-number',1);
                     switchActivePlayer();
+                    checkWinner(this.id, 'playerOne');
                     break;
                 case playerTwo:
                     this.innerHTML = playerTwo.marker;
                     gameBoard.boardArray.splice(this.id, 1, 'O');
-                    //gameFlow(playerTwo, this.id);
                     document.getElementById(this.id).setAttribute('data-number',2);
                     switchActivePlayer();
+                    checkWinner(this.id, 'playerTwo');
                     break;
             };
         };
@@ -82,16 +79,14 @@ for (i = 0; i < boxes.length; i++) {
 
 //switches the active player and populates current player display on DOM
 function switchActivePlayer() {
-    switch(currentPlayer) {
+    switch(gameFlow.currentPlayer) {
         case playerOne:
-            currentPlayer = playerTwo;
+            gameFlow.currentPlayer = playerTwo;
             document.getElementById('currentTurnDisplay').innerHTML = 'Player Two (O)';
-            checkForWinner();
             break;
         case playerTwo:
-            currentPlayer = playerOne;
+            gameFlow.currentPlayer = playerOne;
             document.getElementById('currentTurnDisplay').innerText = 'Player One (X)';
-            checkForWinner();
             break;
     }
 };
