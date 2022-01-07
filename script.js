@@ -11,9 +11,6 @@ const playerTwo = {
     marker: 'O'
 };
 
-//sets playerOne as the default first player
-
-
 //gameboard object
 const gameBoard = {
     boardArray: [0,0,0,0,0,0,0,0,0]
@@ -42,16 +39,19 @@ const gameFlow = {
     currentPlayer: playerOne,
 }
 
-let playerOneArray = [];
-let playerTwoArray = [];
-function checkWinner(arr, currentPlayer) {
+function checkWinner() {
+    for (i = 0; i < winningCombos.length; i++) {
+       console.log(winningCombos[i][2])
+    };
 
 
+   if (gameBoard.boardArray[0] + gameBoard.boardArray[1] + gameBoard.boardArray[2] === 3) {
+       console.log('x wins');
+   }
 };
 
 
 //controls the actual "marking" of Xs and Os on the board...
-//changing class to 'taken' allows me to identify which boxes have text in them thus alerting the user if it is clicked
 for (i = 0; i < boxes.length; i++) {
     boxes[i].addEventListener('click', function() {
         if (this.getAttribute('data-number') == 1) {
@@ -62,17 +62,17 @@ for (i = 0; i < boxes.length; i++) {
             switch (gameFlow.currentPlayer) {
                 case playerOne:
                     this.innerHTML = playerOne.marker;
-                    gameBoard.boardArray.splice(this.id, 1, 'X');
+                    gameBoard.boardArray.splice(this.id, 1, 1);
                     document.getElementById(this.id).setAttribute('data-number',1);
                     switchActivePlayer();
-                    checkWinner(winningCombos, playerOne);
+                    checkWinner();
                     break;
                 case playerTwo:
                     this.innerHTML = playerTwo.marker;
-                    gameBoard.boardArray.splice(this.id, 1, 'O');
+                    gameBoard.boardArray.splice(this.id, 1, 2);
                     document.getElementById(this.id).setAttribute('data-number',2);
                     switchActivePlayer();
-                    checkWinner(winningCombos, playerTwo);
+                    checkWinner();
                     break;
             };
         };
