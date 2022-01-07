@@ -1,5 +1,6 @@
 const boardContainer = document.getElementById('boardcont');
 let boxes = document.querySelectorAll('.markercont');
+document.getElementById('currentTurnDisplay').innerHTML = 'Game has not begun!';
 
 const playerOne = {
     name: 'Player One',
@@ -30,11 +31,9 @@ const winningCombos = [
     [6,7,8],
     [0,3,6],
     [1,4,7],
-    [2,5,8]
-    /*
+    [2,5,8],
     [2,4,6],
     [0,4,8]
-    */
 ];
 
 const gameFlow = {
@@ -60,8 +59,10 @@ function check() {
 function checkWinner(a, b, c) {
    if (gameBoard.boardArray[a] + gameBoard.boardArray[b] + gameBoard.boardArray[c] === 3) {
        console.log('x wins');
+       gameOver();
    } else if (gameBoard.boardArray[a] + gameBoard.boardArray[b] + gameBoard.boardArray[c] === 6) {
        console.log('o wins')
+       gameOver();
    } else {
        console.log('no one won')
    }
@@ -109,3 +110,7 @@ function switchActivePlayer() {
             break;
     }
 };
+
+function gameover() {
+    
+}
