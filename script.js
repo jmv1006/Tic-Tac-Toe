@@ -13,7 +13,7 @@ const playerTwo = {
 
 //gameboard object
 const gameBoard = {
-    boardArray: [0,0,0,0,0,0,0,0,0]
+    boardArray: ['','','','','','','','','']
 };
 
 //this assigns each box an individual ID...
@@ -30,23 +30,40 @@ const winningCombos = [
     [6,7,8],
     [0,3,6],
     [1,4,7],
-    [2,5,8],
+    [2,5,8]
+    /*
     [2,4,6],
     [0,4,8]
+    */
 ];
 
 const gameFlow = {
     currentPlayer: playerOne,
 }
 
-function checkWinner() {
+let a;
+let b;
+let c;
+
+function check() {
     for (i = 0; i < winningCombos.length; i++) {
-       console.log(winningCombos[i][2])
-    };
+        //console.log(winningCombos[i][0])
+        a = winningCombos[i][0];
+        b = winningCombos[i][1];
+        c = winningCombos[i][2];
+        checkWinner(a, b, c);
+     };
+};
 
 
-   if (gameBoard.boardArray[0] + gameBoard.boardArray[1] + gameBoard.boardArray[2] === 3) {
+
+function checkWinner(a, b, c) {
+   if (gameBoard.boardArray[a] + gameBoard.boardArray[b] + gameBoard.boardArray[c] === 3) {
        console.log('x wins');
+   } else if (gameBoard.boardArray[a] + gameBoard.boardArray[b] + gameBoard.boardArray[c] === 6) {
+       console.log('o wins')
+   } else {
+       console.log('no one won')
    }
 };
 
@@ -65,14 +82,14 @@ for (i = 0; i < boxes.length; i++) {
                     gameBoard.boardArray.splice(this.id, 1, 1);
                     document.getElementById(this.id).setAttribute('data-number',1);
                     switchActivePlayer();
-                    checkWinner();
+                    check();
                     break;
                 case playerTwo:
                     this.innerHTML = playerTwo.marker;
                     gameBoard.boardArray.splice(this.id, 1, 2);
                     document.getElementById(this.id).setAttribute('data-number',2);
                     switchActivePlayer();
-                    checkWinner();
+                    check();
                     break;
             };
         };
