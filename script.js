@@ -42,14 +42,11 @@ const gameFlow = {
     currentPlayer: playerOne,
 }
 
-function checkWinner(num, currentP) {
-   console.log(num, currentP);
-   let currentP = playerOne;
+let playerOneArray = [];
+let playerTwoArray = [];
+function checkWinner(arr, currentPlayer) {
 
-   switch(currentP) {
-       case('playerOne'):
-        //
-   }
+
 };
 
 
@@ -68,14 +65,14 @@ for (i = 0; i < boxes.length; i++) {
                     gameBoard.boardArray.splice(this.id, 1, 'X');
                     document.getElementById(this.id).setAttribute('data-number',1);
                     switchActivePlayer();
-                    checkWinner(this.id, 'playerOne');
+                    checkWinner(winningCombos, playerOne);
                     break;
                 case playerTwo:
                     this.innerHTML = playerTwo.marker;
                     gameBoard.boardArray.splice(this.id, 1, 'O');
                     document.getElementById(this.id).setAttribute('data-number',2);
                     switchActivePlayer();
-                    checkWinner(this.id, 'playerTwo');
+                    checkWinner(winningCombos, playerTwo);
                     break;
             };
         };
