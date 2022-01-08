@@ -7,6 +7,7 @@ body {
     font-family: 'Mohave', sans-serif;
 }
 
+
 .gameboard {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -33,6 +34,7 @@ body {
     flex-direction: column;
     padding: 25px;
     font-size: 25px;
+    margin-top: 0px;
 }
 
 #footer {
@@ -42,4 +44,19 @@ body {
     width: 100%;
     font-size: 15px;
     text-align: center;
+}
+
+.interface {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    gap: 55px;
+}
+
+.playerUI {
+    border: 2px solid black;
+    width: 100px;
+    height: 100px;
 }
