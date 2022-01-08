@@ -2,6 +2,7 @@ const boardContainer = document.getElementById('boardcont');
 let boxes = document.querySelectorAll('.markercont');
 document.getElementById('currentTurnDisplay').innerHTML = 'Game has not begun!';
 
+//player objects
 const playerOne = {
     name: 'Player One',
     marker: 'X'
@@ -24,7 +25,7 @@ for (i = 0; i < boxes.length; i++) {
     idMaker++;
 };
 
-//overall gameflow..
+//possible winning combos
 const winningCombos = [
     [0,1,2],
     [3,4,5],
@@ -36,17 +37,19 @@ const winningCombos = [
     [0,4,8]
 ];
 
+//gameflow
 const gameFlow = {
     currentPlayer: playerOne,
 }
 
+
+//checks for winner
 let a;
 let b;
 let c;
 
 function check() {
     for (i = 0; i < winningCombos.length; i++) {
-        //console.log(winningCombos[i][0])
         a = winningCombos[i][0];
         b = winningCombos[i][1];
         c = winningCombos[i][2];
@@ -54,20 +57,17 @@ function check() {
      };
 };
 
-
-
 function checkWinner(a, b, c) {
    if (gameBoard.boardArray[a] + gameBoard.boardArray[b] + gameBoard.boardArray[c] === 3) {
        console.log('x wins');
-       gameOver();
+       gameOver(playerOne);
    } else if (gameBoard.boardArray[a] + gameBoard.boardArray[b] + gameBoard.boardArray[c] === 6) {
        console.log('o wins')
-       gameOver();
+       gameOver(playerTwo);
    } else {
        console.log('no one won')
    }
 };
-
 
 //controls the actual "marking" of Xs and Os on the board...
 for (i = 0; i < boxes.length; i++) {
@@ -111,6 +111,14 @@ function switchActivePlayer() {
     }
 };
 
-function gameover() {
-    
+//Triggers when game ends
+function gameOver(player) {
+    switch(player) {
+        case(playerOne):
+            document.getElementById('currentTurnDisplay').innerHTML = `${playerOne.name} wins!`;
+            break;
+        case(playerTwo):
+            document.getElementById('currentTurnDisplay').innerHTML = `${playerTwo.name} wins!`;
+            break;
+    }
 }
