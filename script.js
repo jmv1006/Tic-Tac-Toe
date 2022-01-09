@@ -143,6 +143,13 @@ function gameOver(player) {
     }
 };
 
+//<-- Code for the AI -->
+const Computer = {
+    marker: 'O',
+    currentBoxChoice: ''
+};
+
+
 //<-- Styling Elements -->
 
 // Changes box color on hover
