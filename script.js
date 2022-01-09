@@ -1,7 +1,7 @@
 const boardContainer = document.getElementById('boardcont');
 let boxes = document.querySelectorAll('.markercont');
 document.getElementById('currentTurnDisplay').innerHTML = 'Game has not begun!';
-
+let tie;
 
 const startButton = document.getElementById('startButton');
 
@@ -79,13 +79,11 @@ function check() {
 
 function checkWinner(a, b, c) {
    if (gameBoard.boardArray[a] + gameBoard.boardArray[b] + gameBoard.boardArray[c] === 3) {
-       console.log('x wins');
-       gameOver(playerOne);
+       openGameOverModal(playerOne);
    } else if (gameBoard.boardArray[a] + gameBoard.boardArray[b] + gameBoard.boardArray[c] === 6) {
-       console.log('o wins')
-       gameOver(playerTwo);
+       openGameOverModal(playerTwo);
    } else {
-       console.log('no one won')
+       //do nothing
    }
 };
 
@@ -104,6 +102,7 @@ for (i = 0; i < boxes.length; i++) {
                     document.getElementById(this.id).setAttribute('data-number',1);
                     switchActivePlayer();
                     check();
+                    checkForTie();
                     break;
                 case playerTwo:
                     this.innerHTML = playerTwo.marker;
@@ -111,6 +110,7 @@ for (i = 0; i < boxes.length; i++) {
                     document.getElementById(this.id).setAttribute('data-number',2);
                     switchActivePlayer();
                     check();
+                    checkForTie();
                     break;
             };
         };
@@ -127,18 +127,6 @@ function switchActivePlayer() {
         case playerTwo:
             gameFlow.currentPlayer = playerOne;
             document.getElementById('currentTurnDisplay').innerText = `${playerOne.name} (${playerOne.marker})`;
-            break;
-    }
-};
-
-//Triggers when game ends
-function gameOver(player) {
-    switch(player) {
-        case(playerOne):
-            document.getElementById('currentTurnDisplay').innerHTML = `${playerOne.name} Wins!`;
-            break;
-        case(playerTwo):
-            document.getElementById('currentTurnDisplay').innerHTML = `${playerTwo.name} Wins!`;
             break;
     }
 };
@@ -161,3 +149,36 @@ for (i = 0; i< boxes.length; i++) {
         this.style.backgroundColor = 'white';
     })
 }
+
+
+
+function checkForTie() {
+    const isFull = gameBoard.boardArray.every(function(element) {return typeof element === 'number';});
+    if (isFull == true) {
+        console.log('tie')
+        openGameOverModal(tie);
+    } else {
+        console.log('still not a tie');
+    }
+};
+
+function openGameOverModal(winner) {
+    document.getElementById('gameOverModal').style.display = 'flex';
+    document.getElementById('turnDisplay').style.display = 'none';
+    document.getElementById('interface').style.display = 'none';
+    switch(winner) {
+        case(playerOne):
+            document.getElementById('gameOverText').innerHTML = `${playerOne.name} Wins!`;
+            break;
+        case(playerTwo):
+            document.getElementById('gameOverText').innerHTML = `${playerTwo.name} Wins!`;
+            break;
+        case(tie):
+            document.getElementById('gameOverText').innerHTML = `It's a tie!`;
+            break;
+    }
+};
+
+document.getElementById('restartButton').addEventListener('click', function() {
+    location.reload();
+});
