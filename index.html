@@ -11,7 +11,10 @@
     <body>
         <h1>Tic Tac Toe</h1>
         <div class = 'interface'>
-            <div class = 'playerUI'></div>
+            <div class = 'playerUI'>
+                <label for="playeronename">Player One Name:</label>
+                <input type="text" class='nameinput' id="p1name" name="playeronename"><br><br>
+            </div>
             <div class = 'gameboard', id = 'boardcont'>
                 <div class = 'markercont' data-number="0"></div>
                 <div class = 'markercont' data-number="0"></div>
@@ -23,7 +26,10 @@
                 <div class = 'markercont' data-number="0"></div>
                 <div class = 'markercont' data-number="0"></div>
             </div>
-            <div class = 'playerUI'></div>
+            <div class = 'playerUI'>
+                <label for="playertwoname">Player Two Name:</label>
+                <input type="text"class='nameinput' id="p2name" name="playertwoname"><br><br>
+            </div>
         </div>
         <div id="turnDisplay"><b>Current Player:</b>
             <div id="currentTurnDisplay"></div>
