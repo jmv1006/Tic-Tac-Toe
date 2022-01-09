@@ -10,11 +10,21 @@
     </head>
     <body>
         <h1>Tic Tac Toe</h1>
-        <div class = 'interface'>
-            <div class = 'playerUI'>
-                <label for="playeronename">Player One Name:</label>
-                <input type="text" class='nameinput' id="p1name" name="playeronename"><br><br>
+        <div id = "playerNamesModal">
+            <div class='inputName'>
+                <label for='player1'>Player One</label>
+                <input type='text' class='nameInputBox' id='player1' placeholder="Player One name...">
             </div>
+            <div class="inputName">
+                <label for='player2'>Player Two</label>
+                <input type='text' class='nameInputBox' id='player2' placeholder="Player Two name...">
+            </div>
+            <button id='startButton'>Start</button>
+        </div>
+        <div id='winnerAnounceModal'>
+            
+        </div>
+        <div id ='interface'>
             <div class = 'gameboard', id = 'boardcont'>
                 <div class = 'markercont' data-number="0"></div>
                 <div class = 'markercont' data-number="0"></div>
@@ -26,17 +36,9 @@
                 <div class = 'markercont' data-number="0"></div>
                 <div class = 'markercont' data-number="0"></div>
             </div>
-            <div class = 'playerUI'>
-                <label for="playertwoname">Player Two Name:</label>
-                <input type="text"class='nameinput' id="p2name" name="playertwoname"><br><br>
-            </div>
         </div>
         <div id="turnDisplay"><b>Current Player:</b>
             <div id="currentTurnDisplay"></div>
-        </div>
-        <div id= 'winModal' class='winnerModal'>
-            <div id='modalContent'></div>
-            <div id='restartButton'><button>New Game</button></div>
         </div>
         <div id="footer">Jonathan Andrade Valenzuela</div>
     </body>

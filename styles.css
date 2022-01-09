@@ -7,8 +7,35 @@ body {
     font-family: 'Mohave', sans-serif;
 }
 
+#playerNamesModal {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin-top: 50px;
+    width: 300px;
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    opacity: 100;
+}
 
-.gameboard {
+.inputName {
+    display: flex;
+    flex-direction: column;
+}
+
+#startButton {
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+    background-color: #70c47e;
+    border-radius: 10px;
+    color: white;
+}
+
+#boardcont {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -28,7 +55,7 @@ body {
 }
 
 #turnDisplay {
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -46,8 +73,8 @@ body {
     text-align: center;
 }
 
-.interface {
-    display: flex;
+#interface {
+    display: none;
     flex-direction: row;
     justify-content: center;
     align-items: flex-start;
@@ -64,7 +91,7 @@ body {
     align-items: center;
 }
 
-.winnerModal {
+#winModal {
     display: none;
     background-color: #868a87;
     border-radius: 8px;
