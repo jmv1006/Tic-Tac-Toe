@@ -13,6 +13,22 @@ const playerTwo = {
     marker: 'O'
 };
 
+document.getElementById('p1name').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        playerOne.name = this.value;
+        this.value = '';
+    }
+});
+
+
+document.getElementById('p2name').addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+        playerTwo.name = this.value
+        this.value = '';
+    }
+});
+
+
 //gameboard object
 const gameBoard = {
     boardArray: ['','','','','','','','','']
@@ -73,9 +89,9 @@ function checkWinner(a, b, c) {
 for (i = 0; i < boxes.length; i++) {
     boxes[i].addEventListener('click', function() {
         if (this.getAttribute('data-number') == 1) {
-            alert('Already Taken!')
+            document.getElementById('currentTurnDisplay').innerHTML = 'Already Taken!'
         } else if (this.getAttribute('data-number') == 2) {
-            alert('Already Taken!');
+            document.getElementById('currentTurnDisplay').innerHTML = 'Already Taken!'
         } else {
             switch (gameFlow.currentPlayer) {
                 case playerOne:
@@ -102,11 +118,11 @@ function switchActivePlayer() {
     switch(gameFlow.currentPlayer) {
         case playerOne:
             gameFlow.currentPlayer = playerTwo;
-            document.getElementById('currentTurnDisplay').innerHTML = 'Player Two (O)';
+            document.getElementById('currentTurnDisplay').innerHTML = playerTwo.name;
             break;
         case playerTwo:
             gameFlow.currentPlayer = playerOne;
-            document.getElementById('currentTurnDisplay').innerText = 'Player One (X)';
+            document.getElementById('currentTurnDisplay').innerText = playerOne.name;
             break;
     }
 };
@@ -115,10 +131,10 @@ function switchActivePlayer() {
 function gameOver(player) {
     switch(player) {
         case(playerOne):
-            document.getElementById('currentTurnDisplay').innerHTML = `${playerOne.name} wins!`;
+            document.getElementById('currentTurnDisplay').innerHTML = `${playerOne.name} Wins!`;
             break;
         case(playerTwo):
-            document.getElementById('currentTurnDisplay').innerHTML = `${playerTwo.name} wins!`;
+            document.getElementById('currentTurnDisplay').innerHTML = `${playerTwo.name} Wins!`;
             break;
     }
-}
+};
