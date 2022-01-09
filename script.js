@@ -2,6 +2,25 @@ const boardContainer = document.getElementById('boardcont');
 let boxes = document.querySelectorAll('.markercont');
 document.getElementById('currentTurnDisplay').innerHTML = 'Game has not begun!';
 
+
+const startButton = document.getElementById('startButton');
+
+startButton.addEventListener('click', function() {
+    startGame();
+    saveNames();
+})
+
+function startGame() {
+    document.getElementById('playerNamesModal').style.display = 'none';
+    document.getElementById('turnDisplay').style.display = 'flex';
+    document.getElementById('interface').style.display = 'flex';
+};
+
+function saveNames() {
+    playerOne.name = document.getElementById('player1').value;
+    playerTwo.name = document.getElementById('player2').value;
+}
+
 //player objects
 const playerOne = {
     name: 'Player One',
@@ -12,21 +31,6 @@ const playerTwo = {
     name: 'Player Two',
     marker: 'O'
 };
-
-document.getElementById('p1name').addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        playerOne.name = this.value;
-        this.value = '';
-    }
-});
-
-
-document.getElementById('p2name').addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-        playerTwo.name = this.value
-        this.value = '';
-    }
-});
 
 
 //gameboard object
@@ -118,11 +122,11 @@ function switchActivePlayer() {
     switch(gameFlow.currentPlayer) {
         case playerOne:
             gameFlow.currentPlayer = playerTwo;
-            document.getElementById('currentTurnDisplay').innerHTML = playerTwo.name;
+            document.getElementById('currentTurnDisplay').innerHTML = `${playerTwo.name} (${playerTwo.marker})`;
             break;
         case playerTwo:
             gameFlow.currentPlayer = playerOne;
-            document.getElementById('currentTurnDisplay').innerText = playerOne.name;
+            document.getElementById('currentTurnDisplay').innerText = `${playerOne.name} (${playerOne.marker})`;
             break;
     }
 };
@@ -132,13 +136,9 @@ function gameOver(player) {
     switch(player) {
         case(playerOne):
             document.getElementById('currentTurnDisplay').innerHTML = `${playerOne.name} Wins!`;
-            document.getElementById('winModal').style.display = 'Block';
-            document.getElementById('modalContent').innerHTML = `${playerOne.name} Wins!`;
             break;
         case(playerTwo):
             document.getElementById('currentTurnDisplay').innerHTML = `${playerTwo.name} Wins!`;
-            document.getElementById('winModal').style.display = 'Block';
-            document.getElementById('modalContent').innerHTML = `${playerTwo.name} Wins!`;
             break;
     }
 };
