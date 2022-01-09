@@ -132,9 +132,25 @@ function gameOver(player) {
     switch(player) {
         case(playerOne):
             document.getElementById('currentTurnDisplay').innerHTML = `${playerOne.name} Wins!`;
+            document.getElementById('winModal').style.display = 'Block';
+            document.getElementById('modalContent').innerHTML = `${playerOne.name} Wins!`;
             break;
         case(playerTwo):
             document.getElementById('currentTurnDisplay').innerHTML = `${playerTwo.name} Wins!`;
+            document.getElementById('winModal').style.display = 'Block';
+            document.getElementById('modalContent').innerHTML = `${playerTwo.name} Wins!`;
             break;
     }
 };
+
+//<-- Styling Elements -->
+
+// Changes box color on hover
+for (i = 0; i< boxes.length; i++) {
+    boxes[i].addEventListener('mouseenter', function() {
+        this.style.backgroundColor = '#70c47e';
+    })
+    boxes[i].addEventListener('mouseleave', function() {
+        this.style.backgroundColor = 'white';
+    })
+}

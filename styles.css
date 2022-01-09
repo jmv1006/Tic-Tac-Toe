@@ -63,3 +63,16 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.winnerModal {
+    display: none;
+    background-color: #868a87;
+    border-radius: 8px;
+    position: absolute;
+    width: 270px;
+    height: 125px;
+    text-align: center;
+    margin: auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
