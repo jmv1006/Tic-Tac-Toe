@@ -3,12 +3,14 @@ let boxes = document.querySelectorAll('.markercont');
 document.getElementById('currentTurnDisplay').innerHTML = 'Game has not begun!';
 let tie;
 
+
+//<-- Start Game Screen -->
 const startButton = document.getElementById('startButton');
 
 startButton.addEventListener('click', function() {
     startGame();
     saveNames();
-})
+});
 
 function startGame() {
     document.getElementById('playerNamesModal').style.display = 'none';
@@ -19,7 +21,7 @@ function startGame() {
 function saveNames() {
     playerOne.name = document.getElementById('player1').value;
     playerTwo.name = document.getElementById('player2').value;
-}
+};
 
 //player objects
 const playerOne = {
@@ -61,7 +63,6 @@ const winningCombos = [
 const gameFlow = {
     currentPlayer: playerOne,
 }
-
 
 //checks for winner
 let a;
@@ -137,21 +138,7 @@ const Computer = {
     currentBoxChoice: ''
 };
 
-
-//<-- Styling Elements -->
-
-// Changes box color on hover
-for (i = 0; i< boxes.length; i++) {
-    boxes[i].addEventListener('mouseenter', function() {
-        this.style.backgroundColor = '#70c47e';
-    })
-    boxes[i].addEventListener('mouseleave', function() {
-        this.style.backgroundColor = 'white';
-    })
-}
-
-
-
+//checks for tie
 function checkForTie() {
     const isFull = gameBoard.boardArray.every(function(element) {return typeof element === 'number';});
     if (isFull == true) {
@@ -162,6 +149,7 @@ function checkForTie() {
     }
 };
 
+//Handles what happens when the game ends
 function openGameOverModal(winner) {
     document.getElementById('gameOverModal').style.display = 'flex';
     document.getElementById('turnDisplay').style.display = 'none';
@@ -182,3 +170,13 @@ function openGameOverModal(winner) {
 document.getElementById('restartButton').addEventListener('click', function() {
     location.reload();
 });
+
+// Changes box color on hover
+for (i = 0; i< boxes.length; i++) {
+    boxes[i].addEventListener('mouseenter', function() {
+        this.style.backgroundColor = '#70c47e';
+    })
+    boxes[i].addEventListener('mouseleave', function() {
+        this.style.backgroundColor = 'white';
+    })
+}
